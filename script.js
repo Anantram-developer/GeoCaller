@@ -25,11 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
 function trackNumber() {
     const phoneNumber = document.getElementById("phoneInput").value.trim();
     const resultDiv = document.getElementById("result");
-    const apiKey = "type your api key from numverify"; // Replace with your actual API key
+    const apiKey = "YOUR_API_KEY_HERE"; // Replace with your actual API key
     const url = `http://apilayer.net/api/validate?access_key=${apiKey}&number=${encodeURIComponent(phoneNumber)}`;
 
     if (!phoneNumber || phoneNumber.length < 5) {
-        resultDiv.innerHTML = "<p style='color: red;'>Please enter a valid phone number.</p>";
+        resultDiv.innerHTML = "<p class='error'>Please enter a valid phone number.</p>";
         return;
     }
 
@@ -44,11 +44,11 @@ function trackNumber() {
                     <p><strong>Line Type:</strong> ${data.line_type || "N/A"}</p>
                 `;
             } else {
-                resultDiv.innerHTML = "<p style='color: red;'>Invalid phone number.</p>";
+                resultDiv.innerHTML = "<p class='error'>Invalid phone number.</p>";
             }
         })
         .catch(error => {
-            resultDiv.innerHTML = "<p style='color: red;'>Error fetching data. Please try again later.</p>";
+            resultDiv.innerHTML = "<p class='error'>Error fetching data. Please try again later.</p>";
             console.error("Error:", error);
         });
 }
